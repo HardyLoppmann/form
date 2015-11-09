@@ -24,18 +24,17 @@
 
     <h1>Welcome!</h1>
 
-    <form th:object="${data}" th:action="@{~/form}" method="post">
+    <!--<form th:object="${data}" th:action="@{~/form}" method="post">-->
+    <!--<form action="hello.thl.html" method="POST" th:action="${#routes.route('hello')}">-->
+    <form action="form.thl.html" method="POST" th:action="@{~/form}">
 
         <!--This don´ work-->
         <!--<p>The text of this user is: <span th:text="${data.text}"></span></p>-->
-        <p>The text of this user is: <span th:text="${text}"></span></p>
+        <p>The text of this user is: <span th:text="${data.text}"></span></p>
+
         <fieldset>
-            <div>
-                <label for="text">Text:</label><input type="text" id="text" th:field="${text}" />
-            </div>
-            <div>
-                <input type="submit" value="Send!" />
-            </div>
+            <input type="text" name="text"/>
+            <input type="submit" value="Send!" />
         </fieldset>
 
     </form>

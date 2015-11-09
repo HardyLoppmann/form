@@ -1,12 +1,10 @@
 
 package sample;
 
+import com.google.common.collect.ImmutableMap;
 import org.apache.felix.ipojo.annotations.Requires;
 import org.wisdom.api.DefaultController;
-import org.wisdom.api.annotations.Body;
-import org.wisdom.api.annotations.Controller;
-import org.wisdom.api.annotations.Route;
-import org.wisdom.api.annotations.View;
+import org.wisdom.api.annotations.*;
 import org.wisdom.api.content.Json;
 import org.wisdom.api.http.HttpMethod;
 import org.wisdom.api.http.Result;
@@ -34,15 +32,15 @@ public class FormController extends DefaultController {
     public Result welcome() {
         System.err.println("GET");
 
-        return ok(render(form));
+        return ok(render(form,ImmutableMap.<String, Object>of("data", new Data())));
     }
 
     @Route(method = HttpMethod.POST, uri = "/form")
     public Result updateTodo(@Body Data data) {
         System.err.println("POST");
         System.err.println("data: " + data);
-        // this data ist always empty
-        return ok(render(form, "text", data.text));
+        //return ok(render(form, "text", data.text));
+        return ok(render(form, ImmutableMap.<String, Object>of("data", data)));
     }
 
 }
