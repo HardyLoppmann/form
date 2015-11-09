@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <title>Form to Wisdom</title>
+    <link rel="shortcut icon" href="/assets/owl-small.png"/>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet" href="/libs/css/bootstrap.css" media="screen"/>
+    <link rel="stylesheet" href="/assets/main.css"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li><a href="http://wisdom-framework.org">Wisdom Framework</a></li>
+            <li><a href="/documentation">Documentation</a></li>
+            <li><a href="/monitor">Admin</a></li>
+            <li><a href="http://wisdom-framework.org/documentation/apidocs/0.9.1/index.html">API</a></li>
+        </ul>
+        <h3 class="text-danger">${project.artifactId} - ${project.version}</h3>
+    </div>
+
+    <h1>Welcome!</h1>
+
+    <form th:object="${data}" th:action="@{~/form}" method="post">
+
+        <!--This don´ work-->
+        <!--<p>The text of this user is: <span th:text="${data.text}"></span></p>-->
+        <p>The text of this user is: <span th:text="${text}"></span></p>
+        <fieldset>
+            <div>
+                <label for="text">Text:</label><input type="text" id="text" th:field="${text}" />
+            </div>
+            <div>
+                <input type="submit" value="Send!" />
+            </div>
+        </fieldset>
+
+    </form>
+
+    <div class="footer">
+        <p>&copy; Wisdom Framework Project 2014
+            <span class="text-muted pull-right">Wisdom Framework - 0.9.1</span></p>
+    </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="/libs/jquery.min.js"></script>
+<script src="/libs/js/bootstrap.min.js"></script>
+
+</body>
+</html>
