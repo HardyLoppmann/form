@@ -33,6 +33,7 @@ public class FormController extends DefaultController {
     @Route(method = HttpMethod.GET, uri = "/form")
     public Result welcome() {
         System.err.println("GET");
+
         return ok(render(form));
     }
 
@@ -40,7 +41,8 @@ public class FormController extends DefaultController {
     public Result updateTodo(@Body Data data) {
         System.err.println("POST");
         System.err.println("data: " + data);
-        return ok(render(form, "data", json.toJson(data)));
+        // this data ist always empty
+        return ok(render(form, "text", data.text));
     }
 
 }

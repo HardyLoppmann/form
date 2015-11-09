@@ -17,8 +17,8 @@ public class Data {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("'data': {");
-        sb.append("'text' = '").append(text).append("'");
+        final StringBuffer sb = new StringBuffer("{\"data\": {");
+        sb.append("\"text\" : \"").append(text).append("\" }");
         sb.append("}");
         return sb.toString();
     }
