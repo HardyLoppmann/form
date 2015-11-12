@@ -24,17 +24,36 @@
 
     <h1>Welcome!</h1>
 
-    <!--<form th:object="${data}" th:action="@{~/form}" method="post">-->
-    <!--<form action="hello.thl.html" method="POST" th:action="${#routes.route('hello')}">-->
     <form action="form.thl.html" method="POST" th:action="@{~/form}">
 
-        <!--This don´ work-->
-        <!--<p>The text of this user is: <span th:text="${data.text}"></span></p>-->
-        <p>The text of this user is: <span th:text="${data.text}"></span></p>
+        <p>The text of this text is: <span th:text="${data.text}"></span></p>
+        <p>The value of this person is: <span th:text="${data.person}"></span></p>
 
         <fieldset>
-            <input type="text" name="text"/>
+
+            <select name="person" id="person">
+                <option th:each="i : ${data.allPersons()}"
+                        th:value="${i.id}"
+                        th:text="${i.name}"
+                        th:id="${i.id}"
+                        th:selected="${i.id == data.person.id}">Persoons</option>
+            </select>
+            <br/>
+            <br/>
+
+            <!--<select name="person" id="person">-->
+                <!--<option th:each="i : ${data.allPersons()}"-->
+                        <!--th:value="${i.id}"-->
+                        <!--th:text="${i.name}"-->
+                        <!--th:id="${i.id}"-->
+                        <!--th:selected="${i.id == data.person.id}">Persoons</option>-->
+
+
+                <input type="text" name="text" th:attr="value=${data.text}"/>
+            <br/>
+            <br/>
             <input type="submit" value="Send!" />
+            <br/>
         </fieldset>
 
     </form>

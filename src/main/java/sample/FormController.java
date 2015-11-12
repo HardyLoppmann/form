@@ -31,7 +31,6 @@ public class FormController extends DefaultController {
     @Route(method = HttpMethod.GET, uri = "/form")
     public Result welcome() {
         System.err.println("GET");
-
         return ok(render(form,ImmutableMap.<String, Object>of("data", new Data())));
     }
 
@@ -39,7 +38,7 @@ public class FormController extends DefaultController {
     public Result updateTodo(@Body Data data) {
         System.err.println("POST");
         System.err.println("data: " + data);
-        //return ok(render(form, "text", data.text));
+        data.setText(data.getText().toUpperCase());
         return ok(render(form, ImmutableMap.<String, Object>of("data", data)));
     }
 
